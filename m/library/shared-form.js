@@ -1,5 +1,5 @@
 //-------------------------------------
-var participant_name=function(record){ if(record.Data.Subject_Initials!=undefined) return record.Data.Subject_ID+' '+record.Data.Subject_Initials; else return record.UID;}
+var participant_name=function(record){ if(record.Data.Subject_Initials!=undefined) return record.UID+' '+record.Data.Subject_Initials; else return record.UID;}
 //-------------------------------------
 //auto select particpant
 var part_id1=$vm.module_list['participant-data'].participant_id.field1;
@@ -32,6 +32,7 @@ var I=0; var loop_1=setInterval(function (){
 var load=m.load;
 m.load=function(){
     load();
+    $('#submit__ID').hide();
     if($vm.online_questionnaire==1) {
         $('#pdf__ID').hide();
         $('#participant_div__ID').hide();
@@ -67,7 +68,7 @@ m.load=function(){
 }
 //-------------------------------------
 m.before_submit=function(data){
-    $vm.alert("Records can be modified.") 
+    $vm.alert("Records can't be modified.") 
     return false;    
 };
 //-------------------------------------
